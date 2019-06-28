@@ -36,6 +36,7 @@ public:
 protected:  // control bar embedded members
 	CMFCMenuBar       m_wndMenuBar;
 	CMFCToolBar       m_wndToolBar;
+	CMFCToolBar       m_wndToolBarImg;
 	CMFCStatusBar     m_wndStatusBar;
 	CMFCToolBarImages m_UserImages;
 	CFileView         m_wndFileView;
@@ -62,6 +63,8 @@ protected:
 
 	BOOL CreateDockingWindows();
 	void SetDockingWindowIcons(BOOL bHiColorIcons);
+public:
+	afx_msg void OnFileOpen();
 };
 
 

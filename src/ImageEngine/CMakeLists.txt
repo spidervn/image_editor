@@ -1,1 +1,1 @@
-add_library(imageenginelib STATIC src/engine.cpp)
+add_library(imageenginelib STATIC ImageEngine/engine.cpp)

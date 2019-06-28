@@ -9,14 +9,41 @@ struct Probabilistic
 {
     SampleSpace O;
     Experiment e;
-    Probabilistic p;
+    ProbabilityFunction p;
 };
 
 /* Random variables */
 struct DiscreteRandomVariable
 {};
-
 struct ContinousRandomVariable
 {};
 
-#endif 
+// ContinousRandomVariable p;
+struct ExpectedValue
+{};
+struct Variance
+{};
+struct StandardDeviation
+{};
+
+// Distributions
+struct BernoulliDistribution
+{};
+
+struct BinomialDistribution
+{};
+
+struct NormalDistribution   // <=> Gaussian distribution
+{}; 
+
+struct GeometricDistribution
+{};
+struct UniformDistribution
+{};
+// Standard deviation
+struct JointDistribution
+{};
+
+
+
+#endif

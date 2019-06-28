@@ -24,6 +24,8 @@ CImageEditorView::~CImageEditorView()
 
 BEGIN_MESSAGE_MAP(CImageEditorView, CWnd)
 	ON_WM_PAINT()
+	ON_COMMAND(ID_CMD_HISTOGRAM, &CImageEditorView::OnCmdHistogram)
+	ON_COMMAND(ID_CMD_OPEN_IMAGE, &CImageEditorView::OnCmdOpenImage)
 END_MESSAGE_MAP()
 
 
@@ -52,3 +54,17 @@ void CImageEditorView::OnPaint()
 	// Do not call CWnd::OnPaint() for painting messages
 }
 
+
+
+void CImageEditorView::OnCmdHistogram()
+{
+	// TODO: Add your command handler code here
+	
+}
+
+
+void CImageEditorView::OnCmdOpenImage()
+{
+	// TODO: Add your command handler code here
+
+}

@@ -76,7 +76,7 @@ public:
         // Entering Sub-Machine (composited-machine)
         if (index >= 0 && index < _vComposite.size())
         {
-            MITSM<T_S, T_I, T_O>* pSubMachine = _vComposite[index]  ;
+            MITSM<T_S, T_I, T_O>* pSubMachine = _vComposite[index];
             // pSubMachine->getNextValues( pSubMachine->myState(), input, output); // Let sub-machine process the input and get Output            
 			T_I inputSub = input;
 

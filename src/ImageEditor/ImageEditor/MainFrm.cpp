@@ -6,6 +6,7 @@
 #include "ImageEditor.h"
 
 #include "MainFrm.h"
+#include "ChildFrm.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -33,6 +34,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CMDIFrameWndEx)
 	ON_COMMAND(ID_VIEW_PROPERTIESWND, &CMainFrame::OnViewPropertiesWindow)
 	ON_UPDATE_COMMAND_UI(ID_VIEW_PROPERTIESWND, &CMainFrame::OnUpdateViewPropertiesWindow)
 	ON_WM_SETTINGCHANGE()
+	ON_COMMAND(ID_FILE_OPEN, &CMainFrame::OnFileOpen)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -97,6 +99,24 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	ASSERT(bNameValid);
 	m_wndToolBar.EnableCustomizeButton(TRUE, ID_VIEW_CUSTOMIZE, strCustomize);
 
+	/*--------------------*/
+	if (!m_wndToolBarImg.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP | CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
+		!m_wndToolBarImg.LoadToolBar(theApp.m_bHiColorIcons ? IDR_TOOLBAR_IMAGE_EDIT : IDR_TOOLBAR_IMAGE_EDIT))
+	{
+		TRACE0("Failed to create toolbar\n");
+		return -1;      // fail to create
+	}
+	CString strToolBarImgName;
+	bNameValid = strToolBarImgName.LoadString(IDS_TOOLBAR_STANDARD);
+	ASSERT(bNameValid);
+	m_wndToolBar.SetWindowText(strToolBarImgName);
+
+	CString strCustomizeImg;
+	bNameValid = strCustomizeImg.LoadString(IDS_TOOLBAR_CUSTOMIZE);
+	ASSERT(bNameValid);
+	m_wndToolBarImg.EnableCustomizeButton(TRUE, ID_VIEW_CUSTOMIZE, strCustomizeImg);
+	/*--------------------*/
+
 	// Allow user-defined toolbars operations:
 	InitUserToolbars(NULL, uiFirstUserToolBarId, uiLastUserToolBarId);
 
@@ -110,9 +130,11 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// TODO: Delete these five lines if you don't want the toolbar and menubar to be dockable
 	m_wndMenuBar.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
+	m_wndToolBarImg.EnableDocking(CBRS_ALIGN_ANY);
 	EnableDocking(CBRS_ALIGN_ANY);
 	DockPane(&m_wndMenuBar);
 	DockPane(&m_wndToolBar);
+	DockPane(&m_wndToolBarImg);
 
 
 	// enable Visual Studio 2005 style docking window behavior
@@ -374,7 +396,6 @@ BOOL CMainFrame::LoadFrame(UINT nIDResource, DWORD dwDefaultStyle, CWnd* pParent
 		return FALSE;
 	}
 
-
 	// enable customization button for all user toolbars
 	BOOL bNameValid;
 	CString strCustomize;
@@ -398,4 +419,29 @@ void CMainFrame::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 {
 	CMDIFrameWndEx::OnSettingChange(uFlags, lpszSection);
 	m_wndOutput.UpdateFonts();
+}
+
+
+void CMainFrame::OnFileOpen()
+{
+	// TODO: Add your command handler code here
+	CFileDialog fd(TRUE, _T("*.bmp"),
+					NULL,
+					OFN_HIDEREADONLY,
+					_T("Text Files: (*.bmp)|*.bmp||"));
+	CString path;
+	if (fd.DoModal() == IDOK)
+	{
+		path = fd.GetPathName();
+
+		// How to open 
+
+		this->LockWindowUpdate();
+		this->CreateNewChild(RUNTIME_CLASS(CChildFrame), IDR_ImageEditorTYPE);
+		// this->CreateNewChild(7)
+		//this->CreateNewChild(RUNTIME_CLASS(CChildFrame));
+		//CChildFrame* pC;
+		//CChildFrame::CreateThisClass();
+		this->UnlockWindowUpdate();
+	}
 }
