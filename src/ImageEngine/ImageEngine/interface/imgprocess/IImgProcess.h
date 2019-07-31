@@ -11,6 +11,8 @@ private:
 public:
     virtual ~IImgProcess() {}
 
+    virtual int convolves(const& ImgObject img1, const& ImgObject& img2) = 0;
+
     virtual int smoothing(BlurTypes type, ImgObject& img) = 0;
     virtual int morphologyTransformation(int morphologyType) = 0;
     

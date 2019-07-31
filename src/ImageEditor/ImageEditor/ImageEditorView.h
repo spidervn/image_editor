@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include <ImageEngine\common\business_struct.h>
 
 // CImageEditorView window
 
@@ -14,15 +15,22 @@ class CImageEditorView : public CWnd
 public:
 	CImageEditorView();
 
+protected:
+// Attributes
+	ImgObject img;
+	ViewModel model;
+
 // Attributes
 public:
 
 // Operations
 public:
+	int openFile(CString file);
 
 // Overrides
-	protected:
+protected:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+
 
 // Implementation
 public:

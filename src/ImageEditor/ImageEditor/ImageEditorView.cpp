@@ -6,10 +6,17 @@
 #include "ImageEditor.h"
 #include "ImageEditorView.h"
 
+#include "impl\CPaintToolkit.h"
+#include <opencv2\core.hpp>
+#include <opencv2\imgproc.hpp>
+#include <opencv2\highgui.hpp>
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
+using namespace std;
+using namespace cv;
 
 // CImageEditorView
 
@@ -50,8 +57,11 @@ void CImageEditorView::OnPaint()
 	CPaintDC dc(this); // device context for painting
 	
 	// TODO: Add your message handler code here
-	
 	// Do not call CWnd::OnPaint() for painting messages
+	if (!model.matCurrent.empty())
+	{
+		// Paint here
+	}
 }
 
 
@@ -59,12 +69,46 @@ void CImageEditorView::OnPaint()
 void CImageEditorView::OnCmdHistogram()
 {
 	// TODO: Add your command handler code here
-	
 }
-
 
 void CImageEditorView::OnCmdOpenImage()
 {
 	// TODO: Add your command handler code here
+	CFileDialog FileDialog(TRUE, _T("*.*"),
+		NULL,
+		OFN_HIDEREADONLY,
+		_T("Image Files: (*.bmp,*.png,*.jpg)|*.bmp|Png files|*.png||"));
+	
+	CString filePath;
+	filePath = _T("");
+	if (FileDialog.DoModal() == IDOK)
+	{
+		filePath = FileDialog.GetFileName();
+		openFile(filePath);
+	}
+}
 
+int CImageEditorView::openFile(CString file)
+{
+	std::string szFile = CT2A(file);
+	img.img  = imread(szFile, IMREAD_COLOR);
+
+	if (!img.img.empty())
+	{
+		img.w = img.img.cols;
+		img.h = img.img.rows;
+
+		model.matOrigin = img.img;
+		model.matCurrent = img.img;
+		model.w = img.w;
+		model.h = img.h;
+
+		this->Invalidate();
+	}
+	else
+	{
+		AfxMessageBox(_T("Open error!"));
+	}
+
+	return 0;
 }

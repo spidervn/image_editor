@@ -11,6 +11,7 @@ public:
     CImgProcess(/* args */);
     virtual ~CImgProcess();
 
+    virtual int convolves(const& ImgObject img1, const& ImgObject& img2);
     int smoothing(BlurTypes type, ImgObject& img);
     int morphologyTransformation(int morphologyType, ImgObject& img);
 };

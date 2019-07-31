@@ -443,5 +443,8 @@ void CMainFrame::OnFileOpen()
 		//CChildFrame* pC;
 		//CChildFrame::CreateThisClass();
 		this->UnlockWindowUpdate();
+
+		CChildFrame *p = (CChildFrame*)MDIGetActive();
+		p->m_wndView.openFile(path);
 	}
 }
