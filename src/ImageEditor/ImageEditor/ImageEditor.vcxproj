@@ -200,6 +200,8 @@
     <ClInclude Include="FileView.h" />
     <ClInclude Include="ImageEditor.h" />
     <ClInclude Include="ImageEditorView.h" />
+    <ClInclude Include="impl\CMFCUtil.h" />
+    <ClInclude Include="impl\CPaintToolkit.h" />
     <ClInclude Include="impl\usecase\CompositeSelectionUC.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="OutputWnd.h" />
@@ -215,6 +217,8 @@
     <ClCompile Include="FileView.cpp" />
     <ClCompile Include="ImageEditor.cpp" />
     <ClCompile Include="ImageEditorView.cpp" />
+    <ClCompile Include="impl\CMFCUtil.cpp" />
+    <ClCompile Include="impl\CPaintToolkit.cpp" />
     <ClCompile Include="impl\usecase\CompositeSelectionUC.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="OutputWnd.cpp" />

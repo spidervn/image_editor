@@ -69,6 +69,12 @@
     <ClInclude Include="impl\usecase\CompositeSelectionUC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="impl\CMFCUtil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="impl\CPaintToolkit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageEditor.cpp">
@@ -102,6 +108,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="impl\usecase\CompositeSelectionUC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\CMFCUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="impl\CPaintToolkit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
