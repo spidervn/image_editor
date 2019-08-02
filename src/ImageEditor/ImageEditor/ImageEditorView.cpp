@@ -7,6 +7,7 @@
 #include "ImageEditorView.h"
 
 #include "impl\CPaintToolkit.h"
+#include "impl\CImageFormatter.h"
 #include <opencv2\core.hpp>
 #include <opencv2\imgproc.hpp>
 #include <opencv2\highgui.hpp>
@@ -61,6 +62,15 @@ void CImageEditorView::OnPaint()
 	if (!model.matCurrent.empty())
 	{
 		// Paint here
+		CPaintToolkit::drawBitmap(
+			(HBITMAP)model.bmpCurrent.m_hObject,
+			dc.m_hDC,
+			0, 0, 
+			model.w,
+			model.h, 
+			0, 0
+		);
+		
 	}
 }
 
@@ -102,6 +112,9 @@ int CImageEditorView::openFile(CString file)
 		model.matCurrent = img.img;
 		model.w = img.w;
 		model.h = img.h;
+
+		IImageFormatterPtr ifp = CImageFormatterPtrNew;
+		ifp->cvMat_to_CBitmap(model.matCurrent, model.bmpCurrent);
 
 		this->Invalidate();
 	}

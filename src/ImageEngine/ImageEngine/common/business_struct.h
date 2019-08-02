@@ -4,32 +4,5 @@
 #include "img_struct.h"
 #include <opencv2/imgproc.hpp>
 
-struct ViewModel
-{
-    cv::Mat matOrigin;
-    cv::Mat matCurrent;
-
-    int w;
-    int h;
-    double zoomLevel;
-
-    ViewModel()
-    {
-        w = 0;
-        h = 0;
-        zoomLevel = 1;
-    }
-};
-
-struct CopyObject
-{
-    BufferDataPtr copyData;
-};
-
-struct EditorOp
-{
-    int opType;
-    BufferDataPtr opData;
-};
 
 #endif

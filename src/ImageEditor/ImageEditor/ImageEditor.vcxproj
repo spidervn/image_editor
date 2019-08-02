@@ -191,8 +191,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="abstract\IImageFormatter.h" />
     <ClInclude Include="ChildFrm.h" />
     <ClInclude Include="ClassView.h" />
+    <ClInclude Include="common\data_struct.h" />
     <ClInclude Include="engine\statemachine\sm.h" />
     <ClInclude Include="engine\statemachine\sm_broadcaster.h" />
     <ClInclude Include="engine\statemachine\sm_composite.h" />
@@ -200,6 +202,7 @@
     <ClInclude Include="FileView.h" />
     <ClInclude Include="ImageEditor.h" />
     <ClInclude Include="ImageEditorView.h" />
+    <ClInclude Include="impl\CImageFormatter.h" />
     <ClInclude Include="impl\CMFCUtil.h" />
     <ClInclude Include="impl\CPaintToolkit.h" />
     <ClInclude Include="impl\usecase\CompositeSelectionUC.h" />
@@ -217,6 +220,7 @@
     <ClCompile Include="FileView.cpp" />
     <ClCompile Include="ImageEditor.cpp" />
     <ClCompile Include="ImageEditorView.cpp" />
+    <ClCompile Include="impl\CImageFormatter.cpp" />
     <ClCompile Include="impl\CMFCUtil.cpp" />
     <ClCompile Include="impl\CPaintToolkit.cpp" />
     <ClCompile Include="impl\usecase\CompositeSelectionUC.cpp" />

@@ -6,7 +6,7 @@
 #pragma once
 
 #include <ImageEngine\common\business_struct.h>
-
+#include "common\data_struct.h"
 // CImageEditorView window
 
 class CImageEditorView : public CWnd

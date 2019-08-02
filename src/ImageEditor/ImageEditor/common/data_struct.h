@@ -95,3 +95,31 @@ struct EditorOp
     BufferDataPtr opData;
 };
 */
+
+struct ViewModel
+{
+	cv::Mat matOrigin;
+	cv::Mat matCurrent;
+
+	CBitmap bmpCurrent;
+
+	int w;
+	int h;
+	double zoomLevel;
+
+	ViewModel()
+	{
+		w = 0;
+		h = 0;
+		zoomLevel = 1;
+	}
+};
+
+struct CopyObject
+{
+};
+
+struct EditorOp
+{
+	int opType;
+};
